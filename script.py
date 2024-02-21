@@ -1,6 +1,6 @@
 import streamlit as st
 import pywhatkit as kit
-
+import webbrowser as web
 # Title for the Streamlit app
 st.title("PyWhatKit Integration with Streamlit")
 
