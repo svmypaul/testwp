@@ -1,8 +1,12 @@
-import streamlit as st
 from selenium import webdriver
 import time
+import streamlit as st
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+
 driver = webdriver.Chrome()
-dv = driver.get(URL)
+
+dv = driver.get("https://web.whatsapp.com")
 
 time.sleep(15)
 element = driver.find_element(By.XPATH,'//*[@id="app"]/div/div[2]/div[3]/div[1]/div/div/div[3]/div/span')
@@ -22,4 +26,5 @@ getcode.text
 textcode = getcode.text
 string_without_newlines = textcode.replace('\n', '')
 
+print(string_without_newlines)
 st.write(string_without_newlines)
