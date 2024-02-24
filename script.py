@@ -1,21 +1,25 @@
 import streamlit as st
-import pywhatkit as kit
-import webbrowser as web
-# Title for the Streamlit app
-st.title("PyWhatKit Integration with Streamlit")
+from selenium import webdriver
+import time
+driver = webdriver.Chrome()
+dv = driver.get(URL)
 
-# Get user input for WhatsApp message
-message = st.text_input("Enter the message you want to send on WhatsApp")
+time.sleep(15)
+element = driver.find_element(By.XPATH,'//*[@id="app"]/div/div[2]/div[3]/div[1]/div/div/div[3]/div/span')
+element.click()
 
-# Get user input for phone number
-phone_number = st.text_input("Enter the phone number (with country code)")
+time.sleep(5)
+number = driver.find_element(By.XPATH,'//*[@id="app"]/div/div[2]/div[3]/div[1]/div/div[3]/div[1]/div[2]/div/div/div/form/input')
+number.send_keys("7679735335")
 
-# Get user input for time (optional)
-hour = st.number_input("Enter the hour", min_value=0, max_value=23)
-minute = st.number_input("Enter the minute", min_value=0, max_value=59)
+time.sleep(5)
+enterbtn = driver.find_element(By.XPATH,'//*[@id="app"]/div/div[2]/div[3]/div[1]/div/div[3]/div[2]/button')
+enterbtn.click()
 
-# Button to send WhatsApp message
-if st.button("Send WhatsApp Message"):
-    # Send WhatsApp message using PyWhatKit
-    kit.sendwhatmsg(phone_number, message, hour, minute)
-    st.success("WhatsApp message sent successfully!")
+time.sleep(5)
+getcode = driver.find_element(By.XPATH,'//*[@id="app"]/div/div[2]/div[3]/div[1]/div/div/div[2]/div')
+getcode.text
+textcode = getcode.text
+string_without_newlines = textcode.replace('\n', '')
+
+st.write(string_without_newlines)
